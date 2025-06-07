@@ -1,0 +1,118 @@
+import React, { useEffect, useState, useRef } from 'react';
+import './Navbar.css';
+
+const Navbar = ({ className = '' }) => {
+  const [navColor, setNavColor] = useState('transparent');
+  const [textColor, setTextColor] = useState('#fff');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const menuRef = useRef();
+  const dropdownRef = useRef();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const hero = document.getElementById('hero');
+      const section = document.getElementById('section');
+      if (!hero || !section) return;
+
+      const scrollY = window.scrollY;
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      const sectionTop = section.offsetTop;
+
+      if (scrollY < heroBottom - 100) {
+        setNavColor('rgba(0, 0, 0, 0)');
+        setTextColor('#fff');
+      } else if (scrollY >= sectionTop - 100) {
+        setNavColor('#fff');
+        setTextColor('#000');
+      } else {
+        setNavColor('rgba(0, 0, 0, 0.8)');
+        setTextColor('#fff');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(e.target)
+      ) {
+        setIsMobileMenuOpen(false);
+      }
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    <nav className={`navbar ${className}`} style={{ background: navColor }}>
+      <div className="navbar-logo" style={{ color: textColor }}>
+        AK Dealer'S
+      </div>
+
+    
+      <div
+        className="mobile-hamburger"
+        onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+        style={{ color: textColor }}
+      >
+        ☰
+      </div>
+
+      <ul
+        className={`navbar-links ${isMobileMenuOpen ? 'open' : ''}`}
+        ref={menuRef}
+      >
+        <li>
+          <a href="/hero" onClick={() => setIsMobileMenuOpen(false)} style={{ color: textColor }}>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="/section" onClick={() => setIsMobileMenuOpen(false)} style={{ color: textColor }}>
+            About
+          </a>
+        </li>
+        <li>
+          <a href="/section" onClick={() => setIsMobileMenuOpen(false)} style={{ color: textColor }}>
+            Services
+          </a>
+        </li>
+
+        
+        <li
+          className="hamburger-dropdown"
+          ref={dropdownRef}
+          onMouseEnter={() => setIsDropdownOpen(true)}
+          onMouseLeave={() => setIsDropdownOpen(false)}
+        >
+          <div className="hamburger-icon" style={{ color: textColor }}>
+            &#9776;
+          </div>
+          {isDropdownOpen && (
+            <ul className="dropdown-menu">
+              <li><a href="/web-dev">Web Development</a></li>
+              <li><a href="/design">UI/UX Design</a></li>
+              <li><a href="/marketing">Marketing</a></li>
+            </ul>
+          )}
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+export default Navbar;

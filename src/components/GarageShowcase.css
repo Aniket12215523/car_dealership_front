@@ -1,0 +1,251 @@
+.garage-container {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 60px 20px;
+  background: #101010;
+  color: #fff;
+  z-index: 0;
+}
+
+.garage-background{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  background-image: url('/images/garage.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: -1;
+}
+
+.garage-background::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,255,255,0.05),
+    rgba(0,255,255,0.05) 1px,
+    transparent 2px
+  );
+  animation: scanlines 2s linear infinite;
+  z-index: 1;
+}
+
+@keyframes scanlines {
+  0% { background-position-y: 0; }
+  100% { background-position-y: 100%; }
+}
+
+
+.car-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.rotating-platform {
+  position: relative;
+  width: 400px;
+  height: 720px;
+  animation: rotateTurntable 5s linear infinite;
+}
+.turntable {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1100px;
+  height: 650px;
+  background: url('/images/turntable.png') no-repeat center;
+  background-size: contain;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.garage-car-standalone {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90vw;
+  max-height: 75vh;
+  object-fit: contain;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+/* @keyframes rotateTurntable {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateY(90deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+
+
+.car-name {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.stats-panel {
+  position: absolute;
+  right: 30px;
+  top: 90px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #00ffff;
+  padding: 20px 25px;
+  border-radius: 15px;
+  color: #0ff;
+  font-family: 'Orbitron', sans-serif;
+  text-align: left;
+  min-width: 220px;
+  z-index: 4;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.5s ease;
+}
+
+.stats-panel h3 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #0ff;
+  padding-bottom: 5px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.label {
+  font-size: 1.1rem;
+  color: #aaa;
+}
+
+.value {
+  font-size: 1.3rem;
+  color: #0ff;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.85; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.hud-overlay {
+  position: relative;
+  margin-top: -70px; 
+  width: 700px;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+
+.hud-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hud-label {
+  font-family: 'Orbitron', sans-serif;
+  color: #0ff;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.hud-bar {
+  width: 120px;
+  height: 10px;
+  background: rgba(0,255,255,0.1);
+  border: 1px solid #0ff;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hud-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0ff, #0ff);
+  transition: width 0.4s ease;
+}
+
+
+
+.rpm-bar::before {
+  animation-duration: 3s;
+}
+
+.nitro-bar::before {
+  animation-duration: 5s;
+}
+
+.speed-readout {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  color: #0ff;
+  text-shadow: 0 0 5px #0ff;
+  animation: flicker 1.5s infinite alternate;
+}
+
+.hud-value {
+  font-size: 1.5rem;
+  margin-top: 5px;
+}
+
+
+.garage-buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  z-index: 2;
+}
+
+.garage-buttons button {
+  background: none;
+  border: 2px solid #0ff;
+  color: #0ff;
+  font-size: 3rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.garage-buttons button:hover {
+  background: #0ff;
+  color: #101010;
+}
+
+
