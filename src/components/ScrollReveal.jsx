@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
 
-function ScrollReveal({ children, threshold = 0.2, animationClass = 'reveal-visible' }) {
+function ScrollReveal({ children, threshold = 0.2, animationClass = 'reveal-visible', enabled = true }) {
   const ref = useRef();
 
   useEffect(() => {
+    if (!enabled) return; // Don't observe if disabled (during preloader)
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -19,7 +21,7 @@ function ScrollReveal({ children, threshold = 0.2, animationClass = 'reveal-visi
     }
 
     return () => observer.disconnect();
-  }, [animationClass, threshold]);
+  }, [animationClass, threshold, enabled]);
 
   return (
     <div ref={ref} className="reveal">

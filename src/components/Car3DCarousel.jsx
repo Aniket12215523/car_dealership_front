@@ -1,13 +1,21 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './Car3DCarousel.css';
 
-function Car3DCarousel({ cars }) {
+function Car3DCarousel() {
   const carouselRef = useRef(null);
   const [rotateY, setRotateY] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);
+  const [cars, setCars] = useState([]);
   const startX = useRef(0);
   const idleTimer = useRef(null);
+
+  
+  useEffect(() => {
+      fetch('http://localhost:14000/api/cars')
+        .then(res => res.json())
+        .then(data => setCars(data));
+    }, []);
 
   const resetIdleTimer = () => {
     if (idleTimer.current) clearTimeout(idleTimer.current);
@@ -30,25 +38,20 @@ function Car3DCarousel({ cars }) {
     resetIdleTimer();
   };
 
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
+  const handleMouseUp = () => setIsDragging(false);
 
-  const handleCarClick = (car) => {
-    setSelectedCar(car);
-  };
+  const handleCarClick = (car) => setSelectedCar(car);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowLeft') {
         setRotateY((prev) => prev - 50);
-        resetIdleTimer();
       } else if (e.key === 'ArrowRight') {
         setRotateY((prev) => prev + 50);
-        resetIdleTimer();
       } else if (e.key === 'Escape') {
         setSelectedCar(null);
       }
+      resetIdleTimer();
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -59,6 +62,8 @@ function Car3DCarousel({ cars }) {
     resetIdleTimer();
     return () => clearTimeout(idleTimer.current);
   }, []);
+
+  if (!cars.length) return <div>Loading cars...</div>;
 
   return (
     <div
@@ -92,25 +97,10 @@ function Car3DCarousel({ cars }) {
       </div>
 
       <div className="carousel-buttons">
-        <button
-          onClick={() => {
-            setRotateY(rotateY - 50);
-            resetIdleTimer();
-          }}
-        >
-          &larr;
-        </button>
-        <button
-          onClick={() => {
-            setRotateY(rotateY + 50);
-            resetIdleTimer();
-          }}
-        >
-          &rarr;
-        </button>
+        <button onClick={() => setRotateY(rotateY - 50)}>&larr;</button>
+        <button onClick={() => setRotateY(rotateY + 50)}>&rarr;</button>
       </div>
 
-      {/* Fullscreen Car Details Overlay */}
       {selectedCar && (
         <div className="car-details-overlay">
           <button className="close-btn" onClick={() => setSelectedCar(null)}>
@@ -121,21 +111,11 @@ function Car3DCarousel({ cars }) {
             <h2>{selectedCar.name}</h2>
             <p>{selectedCar.description}</p>
             <div className="specs">
-              <p>
-                <strong>Price:</strong> ${selectedCar.price.toLocaleString()}
-              </p>
-              <p>
-                <strong>Engine:</strong> {selectedCar.specs.engine}
-              </p>
-              <p>
-                <strong>Horsepower:</strong> {selectedCar.specs.horsepower}
-              </p>
-              <p>
-                <strong>Top Speed:</strong> {selectedCar.specs.topSpeed}
-              </p>
-              <p>
-                <strong>Acceleration:</strong> {selectedCar.specs.acceleration}
-              </p>
+              <p><strong>Price:</strong> ${selectedCar.price.toLocaleString()}</p>
+              <p><strong>Engine:</strong> {selectedCar.specs.engine}</p>
+              <p><strong>Horsepower:</strong> {selectedCar.specs.horsepower}</p>
+              <p><strong>Top Speed:</strong> {selectedCar.specs.topSpeed}</p>
+              <p><strong>Acceleration:</strong> {selectedCar.specs.acceleration}</p>
             </div>
           </div>
         </div>

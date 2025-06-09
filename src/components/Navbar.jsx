@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = ({ className = '' }) => {
@@ -63,7 +64,6 @@ const Navbar = ({ className = '' }) => {
         AK Dealer'S
       </div>
 
-    
       <div
         className="mobile-hamburger"
         onClick={() => setIsMobileMenuOpen((prev) => !prev)}
@@ -77,22 +77,21 @@ const Navbar = ({ className = '' }) => {
         ref={menuRef}
       >
         <li>
-          <a href="/hero" onClick={() => setIsMobileMenuOpen(false)} style={{ color: textColor }}>
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} style={{ color: textColor }}>
             Home
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/section" onClick={() => setIsMobileMenuOpen(false)} style={{ color: textColor }}>
+          <Link to="/Car3DCarousel" onClick={() => setIsMobileMenuOpen(false)} style={{ color: textColor }}>
             About
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/section" onClick={() => setIsMobileMenuOpen(false)} style={{ color: textColor }}>
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} style={{ color: textColor }}>
             Services
-          </a>
+          </Link>
         </li>
 
-        
         <li
           className="hamburger-dropdown"
           ref={dropdownRef}
@@ -102,11 +101,26 @@ const Navbar = ({ className = '' }) => {
           <div className="hamburger-icon" style={{ color: textColor }}>
             &#9776;
           </div>
-          {isDropdownOpen && (
+
+          {!isMobileMenuOpen && isDropdownOpen && (
             <ul className="dropdown-menu">
-              <li><a href="/web-dev">Web Development</a></li>
-              <li><a href="/design">UI/UX Design</a></li>
-              <li><a href="/marketing">Marketing</a></li>
+              <li><Link to="/garageshowcase">2D GarageShowcase</Link></li>
+              <li><Link to="/carshowroom3d">3D Carshowroom</Link></li>
+              <li><Link to="/Car3DCarousel">360° Car Showroom</Link></li>
+            </ul>
+          )}
+
+          {isMobileMenuOpen && (
+            <ul className="dropdown-menu">
+              <li>
+                <Link to="/web-dev" onClick={() => setIsMobileMenuOpen(false)}>Web Development</Link>
+              </li>
+              <li>
+                <Link to="/design" onClick={() => setIsMobileMenuOpen(false)}>UI/UX Design</Link>
+              </li>
+              <li>
+                <Link to="/marketing" onClick={() => setIsMobileMenuOpen(false)}>Marketing</Link>
+              </li>
             </ul>
           )}
         </li>

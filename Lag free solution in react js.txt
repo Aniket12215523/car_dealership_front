@@ -1,0 +1,8 @@
+LAG FREE SOLUTIONS IN REACT JS:
+
+1> component splitting
+2> compressing images and videos
+3> lazy loading
+4> react-intersection-observer for react three js and react-fiber for rendering canvas for 3d models.
+5> preloader for loading all images and assets at once before loading the whole site.
+6> usememo to mount and unmount the particular component 

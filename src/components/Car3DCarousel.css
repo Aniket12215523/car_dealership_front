@@ -121,7 +121,7 @@
 
 .car-details-content h2 {
   font-size: 36px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .car-details-content p {
@@ -136,8 +136,8 @@
 
 .close-btn {
   position: fixed;
-  top: 25px;
-  right: 25px;
+  top: 100px;
+  right: 35px;
   background: transparent;
   border: none;
   font-size: 32px;

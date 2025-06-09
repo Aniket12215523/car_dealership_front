@@ -28,6 +28,7 @@ const CarModel = ({ car, selectedColor, selectedWheel, selectedInteriorColor, op
       selectedWheel === 'black' ? '#111' :
       selectedWheel === 'gold' ? '#FFD700' :
       selectedWheel === 'carbon' ? '#2e2e2e' :
+      selectedWheel === 'offroad' ? '#555' :
       '#888'
     );
 

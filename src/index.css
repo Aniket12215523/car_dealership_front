@@ -8,6 +8,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   color: #fff;
   background: #000;
+  max-width: 100%;
   overflow-x: hidden;
 }
 

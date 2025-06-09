@@ -106,9 +106,16 @@ body {
 
 
 .showroom3d-section {
-  margin-top: 10px;
+  margin-top: 0px;
   padding: 0px;
   background: #000;
+}
+
+.lazy-fallback {
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 2rem;
+  color: #999;
 }
 
 

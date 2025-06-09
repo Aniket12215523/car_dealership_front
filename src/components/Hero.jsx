@@ -1,5 +1,13 @@
 import './Hero.css';
+
 function Hero() {
+  const handleScroll = () => {
+    const nextSection = document.querySelector('.scroll-target');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="hero-section">
       <video autoPlay loop muted className="hero-video">
@@ -10,6 +18,7 @@ function Hero() {
         <h1>Find Your Dream Car</h1>
         <p>Luxury. Speed. Power. All in one place.</p>
       </div>
+      <div className="scroll-down" onClick={handleScroll}></div>
     </section>
   );
 }
