@@ -12,7 +12,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url('/images/showroom.jpg');
+  background-image: url('/images/showroom.png');
   color: #fff;
 }
 
@@ -21,7 +21,7 @@ body {
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  background: linear-gradient(90deg, #ffffff, #ce0fdf, #ffffff);
+  background: linear-gradient(90deg, #ffffff, #0e0d0e, #ffffff);
   background-size: 200% auto;
   color: transparent;
   background-clip: text;
