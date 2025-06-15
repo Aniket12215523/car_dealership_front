@@ -64,7 +64,7 @@ const Preloader = () => {
   <div className="preloader">
     <div className="loader">
       <h1 className="logo-text">AK Dealer's</h1>
-      <div className="loader-title">Please wait while we rev up the engines...</div>
+      <div className="loader-title">Please wait while we load up the site...</div>
       <div className="progress-bar">
         <div className="progress-fill" style={{ width: `${progress}%` }}></div>
       </div>

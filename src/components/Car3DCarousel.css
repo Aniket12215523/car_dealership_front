@@ -9,7 +9,7 @@
 }
 
 .parallax-bg {
-  background-image: url('/images/showroom-parallax.jpg'); 
+  background-image: url('/images/preloader.png'); 
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -54,7 +54,7 @@
   bottom: -60px;
   left: 50%;
   transform: translateX(-50%) rotateY(calc(-1 * var(--item-rotate))) ;
-  color: #131212;
+  color: #f8f6f6;
   font-size: 26px;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
   white-space: nowrap;
