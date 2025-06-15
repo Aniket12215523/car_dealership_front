@@ -9,7 +9,7 @@ function GarageShowcase() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    fetch('http://localhost:14000/api/cars')
+    fetch(`${import.meta.env.VITE_API_URL}/api/cars`)
       .then(res => res.json())
       .then(data => setCars(data));
   }, []);

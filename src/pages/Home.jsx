@@ -15,7 +15,7 @@ function Home({ loading }) {
   const [selectedCar, setSelectedCar] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:14000/api/cars')
+    axios.get(`${import.meta.env.VITE_API_URL}/api/cars`)
       .then(res => {
         console.log(res.data);
         setCars(res.data);
