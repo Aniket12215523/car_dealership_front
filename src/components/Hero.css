@@ -119,8 +119,8 @@
     height: 4px;
   }
   .hero-video{
-    width: 20px;
-    height: 20px;
+    width: 200px;
+    height: 100px;
     object-fit: cover;
   }
 }
