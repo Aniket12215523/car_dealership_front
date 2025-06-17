@@ -118,6 +118,11 @@
     width: 4px;
     height: 4px;
   }
+  .hero-video{
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+  }
 }
 
 /* Ultra small devices */
