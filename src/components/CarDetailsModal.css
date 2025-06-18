@@ -30,13 +30,13 @@
 
 .modal-content {
   background: #111;
-  color: #fff;
+  color: #baf3ed;
   padding: 25px;
   width: 500px;
   max-width: 90%;
   margin-top: 3%;
   border-radius: 15px;
-  border: #ce0fdf 3px solid;
+  border: #474347 3px solid;
   position: relative;
   transform: rotateY(90deg);
   animation: rotateIn 0.5s forwards;
@@ -52,7 +52,7 @@
   right: -5px;
   bottom: -5px;
   border-radius: 20px;
-  background: linear-gradient(90deg, #ce0fdf, #ffffff, #ce0fdf);
+  background: linear-gradient(90deg, #292729, #ffffff, #3c373c);
   background-size: 300% 300%;
   /* animation: borderGlow 3s linear infinite; */
   z-index: 0;

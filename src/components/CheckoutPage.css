@@ -1,0 +1,75 @@
+.checkout-page {
+  background-image: url('/images/parallax-checkout.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 50px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.checkout-page h2 {
+  font-size: 2.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, #08080880, #2adbbd80, #02447e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.car-summary-card {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+  padding: 20px;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.car-summary-card img {
+  width: 250px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.user-details-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-details-form input,
+.user-details-form textarea {
+  padding: 10px;
+  width: 300px;
+  max-width: 90%;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: 0 0 5px #2adbbd;
+}
+
+.user-details-form textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: #2adbbd;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #22a99f;
+}

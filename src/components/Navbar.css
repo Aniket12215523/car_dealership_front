@@ -11,7 +11,7 @@ body, html {
   align-items: center;
   padding: 15px 40px;
   background: transparent;
-  border-bottom: #ce0fdf 3px solid;
+  border-bottom: #2adbbd80 3px solid;
   z-index: 1000;
   transition: background 0.4s ease-in-out;
 }
@@ -20,6 +20,9 @@ body, html {
 .navbar-logo {
   font-size: 1.5rem;
   font-weight: bold;
+  background: linear-gradient(90deg, #2adbbd80, #000000, #02447e);
+  background-size: 300% 300%;
+  animation: borderGlow 3s linear infinite;
 }
 
 
@@ -52,7 +55,16 @@ body, html {
   color: inherit;
 }
 
-.navbar-links li a::after,
+.navbar-links li a::after{
+   content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  background: #2adbbd80;
+  height: 2px;
+  transition: 0.3s ease;
+}
 .dropdown-toggle::after {
   content: "";
   position: absolute;
@@ -60,7 +72,6 @@ body, html {
   bottom: -4px;
   width: 0%;
   height: 2px;
-  background: #ff00ff;
   transition: 0.3s ease;
 }
 
@@ -103,7 +114,7 @@ body, html {
 
 .dropdown-menu li a:hover {
   background-color: #f0f0f0;
-  color: #ce0fdf;
+  color: #105e5180;
   border-radius: 4px;
 }
 
