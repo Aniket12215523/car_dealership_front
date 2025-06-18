@@ -14,8 +14,8 @@ const Navbar = ({ className = '' }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const hero = document.getElementById('hero');
-      const section = document.getElementById('section');
+      const hero = document.getElementById('hero-section');
+      const section = document.getElementById('scroll-target');
       if (!hero || !section) return;
 
       const scrollY = window.scrollY;
@@ -63,7 +63,7 @@ const Navbar = ({ className = '' }) => {
   }, []);
 
   return (
-    <nav className={`navbar ${className}`} style={{ background: navColor, borderBottom: showBorder ? '3px solid #ce0fdf' : 'none' }}>
+    <nav className={`navbar ${className}`} style={{ background: navColor, borderBottom: showBorder ? '3px solid #2adbbd80' : 'none' }}>
       <div className="navbar-logo" style={{ color: textColor }}>
         AK Dealer'S
       </div>

@@ -87,7 +87,7 @@
 }
 
 .carousel-buttons button:hover {
-  background: rgba(255,255,255,0.2);
+  background: #2adbbd80;
 }
 
 
@@ -145,4 +145,27 @@
   cursor: pointer;
   z-index: 105;
 }
+
+@media screen and (max-width: 767px) {
+  .parallax-bg {
+    background-image: url('/images/reloader-mobile.png');
+  }
+}
+
+
+
+
+
+
+.booking-page {
+  background-image: url('images/parallax-booking.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 60px 30px;
+  text-align: center;
+  color: #fff;
+}
+
 

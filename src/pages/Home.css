@@ -17,8 +17,8 @@ body {
 }
 
 .car-section h2 {
-  font-size: 2.0rem;
-  margin-bottom: 0.5rem;
+  font-size: 2.0rem;;
+  margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   background: linear-gradient(90deg, #ffffff, #0e0d0e, #ffffff);
@@ -27,7 +27,7 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   animation: shimmer 2.5s linear infinite;
-  filter: drop-shadow(0 0 5px rgba(42, 219, 189, 0.5));
+  filter: drop-shadow(0 0 5px #2adbbd80);
 }
 
 @keyframes shimmer {
@@ -56,7 +56,7 @@ body {
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  background: linear-gradient(90deg, #ffffff, #ce0fdf, #ffffff);
+  background: linear-gradient(90deg, #ffffff, #2adbbd80, #ffffff);
   background-size: 200% auto;
   color: transparent;
   background-clip: text;
@@ -87,7 +87,7 @@ body {
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  background: linear-gradient(90deg, #ffffff, #2ecee7, #ffffff);
+  background: linear-gradient(90deg, #ffffff, #2adbbd80, #ffffff);
   background-size: 200% auto;
   color: transparent;
   background-clip: text;
@@ -120,5 +120,21 @@ body {
 
 
 
+@media screen and (max-width: 767px) {
+  .car-section {
+   background-image: url('/images/grid-mobile.png'); 
+  }
+}
 
+@media (max-width: 768px) {
+  .garage-section h2 {
+    font-size: 1.4rem;
+  }
+  .car-section h2 {
+    font-size: 1.4rem;
+  }
+  .carousel-section h2 {
+    font-size: 1.4rem;
+  }
+}
 

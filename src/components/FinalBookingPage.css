@@ -1,0 +1,76 @@
+.final-booking-page {
+  background-image: url('/images/parallax-finalbooking.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding: 50px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.final-booking-page h2 {
+  font-size: 2.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, #08080880, #2adbbd80, #02447e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+
+.car-preview-card {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  padding: 20px;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.car-preview-card img {
+  width: 250px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.datetime-selector {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.datetime-selector label {
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.datetime-selector input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 5px;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: 0 0 5px #2adbbd;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background-color: #2adbbd;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #22a99f;
+}

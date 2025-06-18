@@ -1,5 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import ScrollReveal from '../components/ScrollReveal';
 import CarCard from '../components/CarCard';
 import CarDetailsModal from '../components/CarDetailsModal';
@@ -13,6 +14,9 @@ const CarShowroom3D = lazy(() => import('../components/CarShowroom3D'));
 function Home({ loading }) {
   const [cars, setCars] = useState([]);
   const [selectedCar, setSelectedCar] = useState(null);
+
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_API_URL}/api/cars`)
@@ -33,7 +37,9 @@ function Home({ loading }) {
         <div className="car-grid">
           {cars.map((car) => (
             <ScrollReveal key={car._id} enabled={!loading}>
-              <CarCard car={car} onViewDetails={setSelectedCar} />
+              <CarCard car={car} onViewDetails={setSelectedCar} 
+              onBookNow={(car) => navigate('/book/' + car._id, { state: { car } })}
+              />
             </ScrollReveal>
           ))}
         </div>

@@ -1,0 +1,34 @@
+.booking-page {
+  padding: 60px 30px;
+  background-image: url('images/parallax-booking.png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+
+.book-title {
+   font-size: 2.0rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #ffffff, #0e0d0e, #ffffff);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shimmer 2.5s linear infinite;
+  filter: drop-shadow(0 0 5px #2adbbd80);
+}
+
+
+
+
+.car-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+}

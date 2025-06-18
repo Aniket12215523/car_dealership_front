@@ -22,7 +22,7 @@
   margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  background: linear-gradient(90deg, #ffffff, #2ecee7, #ffffff);
+  background: linear-gradient(90deg, #ffffff, #2adbbd80, #ffffff);
   background-size: 200% auto;
   color: transparent;
   background-clip: text;
@@ -93,7 +93,7 @@
   margin-bottom: 0.5rem;
   font-weight: 600;
   font-size: 1rem;
-  color: #2ecee7;
+  color: #2adbbd80;
   letter-spacing: 1px;
   text-transform: uppercase;
   text-shadow: 0 0 5px rgba(46, 206, 231, 0.6);

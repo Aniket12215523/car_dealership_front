@@ -17,10 +17,13 @@
 .logo-text {
   font-size: 2.8rem;
   font-weight: bold;
-  color: #f600fe;
+  background: linear-gradient(90deg, #08080880, #2adbbd80, #02447e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
   margin-bottom: 1rem;
   font-family: 'Orbitron', sans-serif;
-  text-shadow: 0 0 10px #ff00ff;
+  text-shadow: 0 0 10px #2adbbd80;
 }
 
 
@@ -43,7 +46,7 @@
   font-size: 2rem;
   margin-bottom: 1.5rem;
   font-weight: bold;
-  color: #f600fe;
+  color: #2adbbd80;
   animation: pulse 2s infinite;
 }
 
@@ -66,7 +69,7 @@
   overflow: hidden;
   margin: 20px auto;
   box-shadow: 0 0 8px rgba(233, 5, 237, 0.2);
-  border: 2px solid #f600fe;
+  border: 2px solid #2adbbd80;
 }
 
 .progress-fill {
@@ -74,10 +77,10 @@
   width: 0%;
   background: repeating-linear-gradient(
     45deg,
-    #f600fe,
-    #f600fe 10px,
-    #f600fe 10px,
-    #f600fe 20px
+    #2adbbd80,
+    #2adbbd80 10px,
+    #2adbbd80 10px,
+    #2adbbd80 20px
   );
   animation: moveStripes 1s linear infinite;
   transition: width 0.4s ease-in-out;
@@ -98,7 +101,7 @@
   right: 20px;
   font-size: 1.6rem;
   background: rgba(0, 0, 0, 0.5);
-  border: 2px solid #f600fe;
+  border: 2px solid #2adbbd80;
   color: #fff;
   padding: 8px 12px;
   border-radius: 6px;
@@ -110,4 +113,10 @@
 .mute-toggle:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: scale(1.1);
+}
+
+@media screen and (max-width: 767px) {
+  .preloader {
+    background: url('/images/pre-mobile.png') no-repeat center center/cover;
+  }
 }
