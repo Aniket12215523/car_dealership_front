@@ -1,39 +1,31 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = ({ className = '' }) => {
-  const [navColor, setNavColor] = useState('transparent');
-  const [textColor, setTextColor] = useState('#fff');
-  const [showBorder, setShowBorder] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   const menuRef = useRef();
   const dropdownRef = useRef();
+  const navbarRef = useRef();
 
   useEffect(() => {
     const handleScroll = () => {
-      const hero = document.getElementById('hero-section');
-      const section = document.getElementById('scroll-target');
-      if (!hero || !section) return;
-
-      const scrollY = window.scrollY;
-      const heroBottom = hero.offsetTop + hero.offsetHeight;
-      const sectionTop = section.offsetTop;
-
-      if (scrollY < heroBottom - 100) {
-        setNavColor('rgba(0, 0, 0, 0)');
-        setTextColor('#fff');
-        setShowBorder(false); 
-      } else if (scrollY >= sectionTop - 100) {
-        setNavColor('#fff');
-        setTextColor('#000');
-        setShowBorder(true); 
-      } else {
-        setNavColor('rgba(0, 0, 0, 0.8)');
-        setTextColor('#fff');
-        setShowBorder(true); 
+      const heroHeight = document.getElementById('hero-section')?.offsetHeight || 0;
+      setIsScrolled(window.scrollY > heroHeight * 0.6);
+      
+      const sections = ['home', 'about', 'services', 'showcase'];
+      const scrollPosition = window.scrollY + 100;
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element && scrollPosition >= element.offsetTop && scrollPosition < element.offsetTop + element.offsetHeight) {
+          setActiveSection(section);
+          break;
+        }
       }
     };
 
@@ -44,16 +36,10 @@ const Navbar = ({ className = '' }) => {
 
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(e.target)
-      ) {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
         setIsMobileMenuOpen(false);
       }
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setIsDropdownOpen(false);
       }
     };
@@ -62,36 +48,58 @@ const Navbar = ({ className = '' }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+ const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(prev => !prev);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+
   return (
-    <nav className={`navbar ${className}`} style={{ background: navColor, borderBottom: showBorder ? '3px solid #2adbbd80' : 'none' }}>
-      <div className="navbar-logo" style={{ color: textColor }}>
-        AK Dealer'S
+    <nav 
+      ref={navbarRef}
+      className={`navbar ${className} ${isScrolled ? 'scrolled' : ''} ${isMobileMenuOpen ? 'mobile-open' : ''}`}
+    >
+      <div className="navbar-logo">
+        <Link to="/" className="logo-link">
+          <span className="logo-text">AK Dealer'S</span>
+          <span className="logo-highlight"></span>
+        </Link>
       </div>
 
-      <div
-        className="mobile-hamburger"
-        onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-        style={{ color: textColor }}
-      >
-        ☰
+      <div className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+        {isMobileMenuOpen ? (
+          <div className="mobile-close-icon" onClick={(e) => {
+            e.stopPropagation(); 
+            closeMobileMenu();
+          }}>✕</div>
+        ) : (
+          <div className="mobile-hamburger">
+            <div className="hamburger-line"></div>
+            <div className="hamburger-line"></div>
+            <div className="hamburger-line"></div>
+          </div>
+        )}
       </div>
 
       <ul
         className={`navbar-links ${isMobileMenuOpen ? 'open' : ''}`}
         ref={menuRef}
       >
-        <li>
-          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} style={{ color: textColor }}>
+        <li className={activeSection === 'home' ? 'active' : ''}>
+          <Link to="/" onClick={closeMobileMenu}>
             Home
           </Link>
         </li>
-        <li>
-          <Link to="/Car3DCarousel" onClick={() => setIsMobileMenuOpen(false)} style={{ color: textColor }}>
+        <li className={activeSection === 'about' ? 'active' : ''}>
+          <Link to="/Car3DCarousel" onClick={closeMobileMenu}>
             About
           </Link>
         </li>
-        <li>
-          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} style={{ color: textColor }}>
+        <li className={activeSection === 'services' ? 'active' : ''}>
+          <Link to="/services" onClick={closeMobileMenu}>
             Services
           </Link>
         </li>
@@ -99,34 +107,17 @@ const Navbar = ({ className = '' }) => {
         <li
           className="hamburger-dropdown"
           ref={dropdownRef}
-          onMouseEnter={() => setIsDropdownOpen(true)}
-          onMouseLeave={() => setIsDropdownOpen(false)}
+          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          <div className="hamburger-icon" style={{ color: textColor }}>
-            &#9776;
+          <div className="dropdown-toggle">
+            Showrooms <span className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}>▼</span>
           </div>
 
-          {!isMobileMenuOpen && isDropdownOpen && (
-            <ul className="dropdown-menu">
-              <li><Link to="/garageshowcase">2D GarageShowcase</Link></li>
-              <li><Link to="/carshowroom3d">3D Carshowroom</Link></li>
-              <li><Link to="/Car3DCarousel">360° Car Showroom</Link></li>
-            </ul>
-          )}
-
-          {isMobileMenuOpen && (
-            <ul className="dropdown-menu">
-              <li>
-                <Link to="/web-dev" onClick={() => setIsMobileMenuOpen(false)}>Web Development</Link>
-              </li>
-              <li>
-                <Link to="/design" onClick={() => setIsMobileMenuOpen(false)}>UI/UX Design</Link>
-              </li>
-              <li>
-                <Link to="/marketing" onClick={() => setIsMobileMenuOpen(false)}>Marketing</Link>
-              </li>
-            </ul>
-          )}
+          <ul className={`dropdown-menu ${isDropdownOpen ? 'open' : ''}`}>
+            <li><Link to="/garageshowcase" onClick={closeMobileMenu}>2D GarageShowcase</Link></li>
+            <li><Link to="/carshowroom3d" onClick={closeMobileMenu}>3D Carshowroom</Link></li>
+            <li><Link to="/Car3DCarousel" onClick={closeMobileMenu}>360° Car Showroom</Link></li>
+          </ul>
         </li>
       </ul>
     </nav>
@@ -134,3 +125,5 @@ const Navbar = ({ className = '' }) => {
 };
 
 export default Navbar;
+
+
