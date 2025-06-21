@@ -18,8 +18,8 @@ function Hero() {
 
   return (
     <section className="hero-section">
-     <video autoPlay loop muted playsInline preload="auto" className="hero-video desktop-video">
-        <source src="/videos/car-driving.mp4" type="video/mp4" />
+     <video autoPlay loop muted playsInline  className="hero-video desktop-video">
+        <source src="/videos/car-driving-mobile.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
