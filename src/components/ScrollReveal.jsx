@@ -4,7 +4,7 @@ function ScrollReveal({ children, threshold = 0.2, animationClass = 'reveal-visi
   const ref = useRef();
 
   useEffect(() => {
-    if (!enabled) return; // Don't observe if disabled (during preloader)
+    if (!enabled) return; 
 
     const observer = new IntersectionObserver(
       ([entry]) => {
