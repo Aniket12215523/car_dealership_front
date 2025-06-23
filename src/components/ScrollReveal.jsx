@@ -4,7 +4,7 @@ function ScrollReveal({ children, threshold = 0.2, animationClass = 'reveal-visi
   const ref = useRef();
 
   useEffect(() => {
-    if (!enabled) return; 
+    if (!enabled) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -13,7 +13,7 @@ function ScrollReveal({ children, threshold = 0.2, animationClass = 'reveal-visi
           observer.unobserve(entry.target);
         }
       },
-      { threshold }
+      { threshold: window.innerWidth < 768 ? 0.05 : threshold }
     );
 
     if (ref.current) {
