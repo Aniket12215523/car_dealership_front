@@ -12,7 +12,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url('/images/showroom2.jpg');
+  background-image: url('/images/showroom1.png');
   color: #fff;
 }
 
@@ -122,7 +122,7 @@ body {
 
 @media screen and (max-width: 767px) {
   .car-section {
-   background-image: url('/images/showroom2.jpg'); 
+   background-image: url('/images/showroom1-mobile.png'); 
   }
 }
 
