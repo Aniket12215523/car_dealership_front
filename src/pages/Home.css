@@ -1,33 +1,33 @@
-
 body {
   background: #000;
   margin: 0;
   font-family: 'Poppins', sans-serif;
 }
 
-
 .car-section {
   padding: 80px 20px;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: url('/images/showroom1.png') no-repeat center 0px;
   background-size: cover;
-  background-image: url('/images/showroom1.png');
+  background-position: center 0px;
   color: #fff;
+  position: relative;
+  overflow: hidden;
 }
 
-.car-section h2 {
-  font-size: 2.0rem;;
-  margin-bottom: 2rem;
+.car-section h2,
+.carousel-section h2,
+.garage-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  background: linear-gradient(90deg, #ffffff, #0e0d0e, #ffffff);
+  background: linear-gradient(90deg, #ffffff, #2adbbd80, #ffffff);
   background-size: 200% auto;
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
   animation: shimmer 2.5s linear infinite;
-  filter: drop-shadow(0 0 5px #2adbbd80);
+  filter: drop-shadow(0 0 5px rgba(42, 219, 189, 0.5));
 }
 
 @keyframes shimmer {
@@ -47,67 +47,27 @@ body {
 }
 
 .carousel-section {
-  margin: 0px 0;
+  margin: 0;
   text-align: center;
   color: #aea4a4;
 }
-.carousel-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  background: linear-gradient(90deg, #ffffff, #2adbbd80, #ffffff);
-  background-size: 200% auto;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  animation: shimmer 2.5s linear infinite;
-  filter: drop-shadow(0 0 5px rgba(42, 219, 189, 0.5));
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: 200% center;
-  }
-  100% {
-    background-position: -200% center;
-  }
-}
-
 
 .garage-section {
-  padding: 0px;
+  padding: 0;
   background: #101010;
   color: #fff;
   text-align: center;
 }
 
-.garage-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  background: linear-gradient(90deg, #ffffff, #2adbbd80, #ffffff);
-  background-size: 200% auto;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  animation: shimmer 2.5s linear infinite;
-  filter: drop-shadow(0 0 5px rgba(42, 219, 189, 0.5));
-}
-@keyframes shimmer {
-  0% {
-    background-position: 200% center;
-  }
-  100% {
-    background-position: -200% center;
-  }
-}
-
-
 .showroom3d-section {
-  margin-top: 0px;
-  padding: 0px;
+  margin-top: 0;
+  padding: 0;
+  background: #000;
+}
+
+.videoshowcase-section {
+  margin-top: 0;
+  padding: 0;
   background: #000;
 }
 
@@ -127,13 +87,9 @@ body {
 }
 
 @media (max-width: 768px) {
+  .car-section h2,
+  .carousel-section h2,
   .garage-section h2 {
-    font-size: 1.4rem;
-  }
-  .car-section h2 {
-    font-size: 1.4rem;
-  }
-  .carousel-section h2 {
     font-size: 1.4rem;
   }
 }
