@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import './CarVideoShowcase.css';
 
@@ -23,7 +24,7 @@ const CarVideoShowcase = () => {
       
 
       <select
-        className="car-select"
+        className="car-select-video"
         value={selectedCar?._id || ''}
         onChange={(e) =>
           setSelectedCar(cars.find(car => car._id === e.target.value))
@@ -43,7 +44,7 @@ const CarVideoShowcase = () => {
             Your browser does not support the video tag.
           </video>
         ) : (
-          <p>Select a car to watch its race video.</p>
+          <p>No video available for selected car</p>
         )}
       </div>
     </div>
