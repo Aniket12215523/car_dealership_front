@@ -245,6 +245,15 @@
     width: 100%;
   }
 
+  .garage-car-standalone {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    max-height: 50vh;
+    object-fit: contain;
+  }
   
   .stats-panel {
     position: static;
@@ -279,6 +288,7 @@
     margin-top: 0.3rem;
   }
 
+  
   .garage-buttons {
     flex-wrap: wrap;
     justify-content: center;
