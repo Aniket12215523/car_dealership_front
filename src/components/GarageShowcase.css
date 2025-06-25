@@ -242,7 +242,7 @@
   }
 
    .car-display {
-    width: 110%;
+    width: 100%;
   }
 
   
@@ -284,7 +284,7 @@
     justify-content: center;
     gap: 1rem;
     padding-left: 1rem;
-    margin-top: 13rem;
+    margin-top: 10rem;
   }
 
   .garage-buttons button {
