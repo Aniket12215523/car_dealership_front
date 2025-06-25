@@ -21,8 +21,6 @@ const CarVideoShowcase = () => {
     <div className="video-showcase-wrapper">
       <h2>Car Video Showcase</h2>
 
-      
-
       <select
         className="car-select-video"
         value={selectedCar?._id || ''}
