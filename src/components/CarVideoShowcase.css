@@ -35,6 +35,10 @@
   background-color: #1c1c1c;
 }
 
+.car-select-video option:hover {
+  border-color: #c35d37;
+}
+
 .car-select-video:hover {
   border-color: #c35d37;
 }
@@ -45,7 +49,7 @@
 
 .video-player video {
   width: 100%;
-  max-width: 1300px;
+  max-width: 1250px;
   border-radius: 12px;
   border: 2px solid #e0560c;
   box-shadow: 0 0 20px rgba(210, 52, 4, 0.3);
