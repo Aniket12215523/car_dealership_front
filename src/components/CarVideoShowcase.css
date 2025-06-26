@@ -1,9 +1,14 @@
 .video-showcase-wrapper {
+  position: relative;
   padding: 40px;
-  background-color: #0d0d0d;
   color: #f0f0f0;
   text-align: center;
-  
+  overflow: hidden;
+  background-image: url('/images/video-bg.png'); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: background-position 0.1s ease-out;
 }
 
 .video-showcase-wrapper h2 {
@@ -30,16 +35,20 @@
   background-color: #1c1c1c;
 }
 
+.car-select-video:hover {
+  border-color: #c35d37;
+}
+
 .video-player {
   margin-top: 30px;
 }
 
 .video-player video {
   width: 100%;
-    max-width: 1200px;
+  max-width: 1300px;
   border-radius: 12px;
-  border: 2px solid #222;
-  box-shadow: 0 0 20px rgba(255, 60, 0, 0.3);
+  border: 2px solid #e0560c;
+  box-shadow: 0 0 20px rgba(210, 52, 4, 0.3);
 }
 
 .video-player p {
