@@ -35,7 +35,7 @@
   background-color: #1c1c1c;
 }
 
-.car-select-video option:hover {
+.car-select-video option {
   border-color: #c35d37;
 }
 

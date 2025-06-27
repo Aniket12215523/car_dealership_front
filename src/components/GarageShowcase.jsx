@@ -56,7 +56,7 @@ function GarageShowcase() {
           </div>
           <div className="hud-section speed-readout">
             <span>Speed:</span>
-            <span className="hud-value">{currentCar.specs.topSpeed} km/h</span>
+            <span className="hud-value">{currentCar.specs.topSpeed}</span>
           </div>
         </div>
       </div>
