@@ -16,6 +16,8 @@ import GarageShowcase from './components/GarageShowcase';
 import BookingPage from './components/BookingPage'; 
 import FinalBookingPage from './components/FinalBookingPage'; 
 import CheckoutPage from './components/CheckoutPage';
+import RegisterForm from './components/register';
+import LoginForm from './components/login';
 
 function AppWrapper() {
   const location = useLocation();
@@ -35,6 +37,8 @@ function AppWrapper() {
           <Route path="/carshowroom3d" element={<CarShowroom3D />} />
           <Route path="/car3dcarousel" element={<Car3DCarousel />} />
           <Route path="/garageshowcase" element={<GarageShowcase />} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/login" element={<LoginForm />} />
         </Routes>
       </div>
     </>
