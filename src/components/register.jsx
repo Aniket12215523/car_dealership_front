@@ -2,10 +2,12 @@ import { useState } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import VideoBackground from './VideoBackground';
+import CustomAlert from './CustomAlert';
 import './AuthForms.css';
 
 function RegisterForm() {
   const [formData, setFormData] = useState({ name: '', email: '', password: '', phone: '' });
+  const [alert, setAlert] = useState(null);
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -14,16 +16,29 @@ function RegisterForm() {
     try {
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`, formData);
       localStorage.setItem('token', res.data.token);
-      alert('Registration Successful!');
-      window.location.href = '/';
+      setAlert({ message: 'Registration Successful!', type: 'success' });
+      setTimeout(() => (window.location.href = '/'), 2000);
     } catch (err) {
-      alert(err.response?.data?.message || 'Registration failed');
+      setAlert({ 
+        message: err.response?.data?.message || 'Registration failed. Please try again.', 
+        type: 'error' 
+      });
     }
   };
 
   return (
     <div className="auth-page">
       <VideoBackground />
+
+      
+      {alert && (
+        <CustomAlert 
+          message={alert.message}
+          type={alert.type}
+          onClose={() => setAlert(null)} 
+        />
+      )}
+
       <motion.div
         className="auth-card"
         initial={{ scale: 0.8, opacity: 0 }}
