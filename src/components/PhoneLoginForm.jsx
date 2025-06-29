@@ -11,41 +11,19 @@ function PhoneLoginForm() {
   const [otp, setOtp] = useState('');
   const [confirmationResult, setConfirmationResult] = useState(null);
   const [alert, setAlert] = useState(null);
-  const [recaptchaReady, setRecaptchaReady] = useState(false);
 
   useEffect(() => {
-    const initializeRecaptcha = () => {
-      try {
-        // Clear existing if any
-        if (window.recaptchaVerifier) {
-          window.recaptchaVerifier.clear();
+    window.recaptchaVerifier = new RecaptchaVerifier(
+      'recaptcha-container',
+      {
+        size: 'invisible',
+        callback: () => console.log("reCAPTCHA solved"),
+        'expired-callback': () => {
+          setAlert({ message: 'Security session expired. Please try again.', type: 'error' });
         }
-
-        window.recaptchaVerifier = new RecaptchaVerifier(
-          'recaptcha-container',
-          {
-            size: 'invisible',
-            callback: () => setRecaptchaReady(true),
-            'expired-callback': () => setRecaptchaReady(false)
-          },
-          auth
-        );
-
-        window.recaptchaVerifier.render().then(() => {
-          console.log("reCAPTCHA ready");
-          setRecaptchaReady(true);
-        });
-
-      } catch (error) {
-        console.error("reCAPTCHA init error:", error);
-        setAlert({
-          message: 'Security verification failed. Please refresh.',
-          type: 'error'
-        });
-      }
-    };
-
-    initializeRecaptcha();
+      },
+      auth
+    );
 
     return () => {
       if (window.recaptchaVerifier) {
@@ -57,13 +35,8 @@ function PhoneLoginForm() {
   const handleSendOTP = async (e) => {
     e.preventDefault();
     
-    if (!recaptchaReady) {
-      setAlert({ message: 'Security check not ready. Please wait.', type: 'error' });
-      return;
-    }
-
     try {
-      const formattedPhone = phone.startsWith('+') ? phone : `+${phone}`;
+      const formattedPhone = phone.startsWith('+') ? phone : `+91${phone}`;
       const result = await signInWithPhoneNumber(
         auth,
         formattedPhone,
@@ -71,13 +44,13 @@ function PhoneLoginForm() {
       );
       
       setConfirmationResult(result);
-      setAlert({ message: 'OTP sent!', type: 'success' });
+      setAlert({ message: 'OTP sent successfully!', type: 'success' });
     } catch (error) {
-      console.error("Send OTP error:", error);
+      console.error("OTP send error:", error);
       setAlert({
         message: error.message.includes('invalid-phone-number') 
-          ? 'Invalid phone number format' 
-          : 'Failed to send OTP. Try again.',
+          ? 'Invalid phone number format (include country code)' 
+          : 'Failed to send OTP. Please try again.',
         type: 'error'
       });
     }
@@ -88,16 +61,11 @@ function PhoneLoginForm() {
     try {
       const result = await confirmationResult.confirm(otp);
       localStorage.setItem('token', result.user.accessToken);
-      setAlert({ message: 'Login successful!', type: 'success' });
-      setTimeout(() => window.location.href = '/', 1500);
+      setAlert({ message: 'Login successful! Redirecting...', type: 'success' });
+      setTimeout(() => (window.location.href = '/'), 2000);
     } catch (error) {
-      console.error("Verify OTP error:", error);
-      setAlert({
-        message: error.message.includes('invalid-verification-code')
-          ? 'Invalid OTP code'
-          : 'Verification failed',
-        type: 'error'
-      });
+      console.error("OTP verify error:", error);
+      setAlert({ message: 'Invalid OTP. Please try again.', type: 'error' });
     }
   };
 
@@ -112,7 +80,12 @@ function PhoneLoginForm() {
         />
       )}
 
-      <motion.div className="auth-card">
+      <motion.div 
+        className="auth-card"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
         <h2>Phone Login</h2>
         <form onSubmit={confirmationResult ? handleVerifyOTP : handleSendOTP}>
           <input 
@@ -121,6 +94,7 @@ function PhoneLoginForm() {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
+            disabled={!!confirmationResult}
           />
 
           {confirmationResult && (
