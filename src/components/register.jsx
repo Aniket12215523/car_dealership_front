@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import VideoBackground from './VideoBackground';
@@ -8,6 +10,13 @@ import './AuthForms.css';
 function RegisterForm() {
   const [formData, setFormData] = useState({ name: '', email: '', password: '', phone: '' });
   const [alert, setAlert] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      navigate('/');
+    }
+  }, []);
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -53,6 +62,9 @@ function RegisterForm() {
           <input type="text" name="phone" placeholder="Phone" onChange={handleChange} />
           <button type="submit">Register</button>
         </form>
+        <p className="toggle-link">
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
       </motion.div>
     </div>
   );

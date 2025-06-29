@@ -87,3 +87,13 @@
   background-color: #fff;
   color: #101010;
 }
+.toggle-link {
+  margin-top: 1rem;
+  color: #ccc;
+  text-align: center;
+}
+
+.toggle-link a {
+  color: #00f0ff;
+  text-decoration: underline;
+}

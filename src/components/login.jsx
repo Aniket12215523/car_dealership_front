@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import { motion } from 'framer-motion';
 import { auth } from './firebaseConfig';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import VideoBackground from './VideoBackground';
 import CustomAlert from './CustomAlert';
 import GoogleLoginButton from './GoogleLoginButton';
@@ -15,6 +17,13 @@ function LoginForm() {
   const [phone, setPhone] = useState('');
   const [otp, setOtp] = useState('');
   const [confirmationResult, setConfirmationResult] = useState(null);
+   const navigate = useNavigate();
+
+   useEffect(() => {
+    if (localStorage.getItem('token')) {
+      navigate('/');
+    }
+  }, []);
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -38,7 +47,7 @@ function LoginForm() {
   };
 
   const setupRecaptcha = () => {
-    // Clear existing recaptcha if any
+   
     if (window.recaptchaVerifier) {
       window.recaptchaVerifier.clear();
     }
@@ -84,7 +93,6 @@ function LoginForm() {
   };
 
   const handleTogglePhoneLogin = () => {
-    // Reset phone form state and clear recaptcha verifier if any
     setPhone('');
     setOtp('');
     setConfirmationResult(null);
@@ -146,6 +154,9 @@ function LoginForm() {
             >
               Sign in with Phone Number
             </button>
+            <p className="toggle-link">
+              Don't have an account? <Link to="/register">Register</Link>
+            </p>
           </>
         ) : (
           <>
