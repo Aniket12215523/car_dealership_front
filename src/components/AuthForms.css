@@ -71,3 +71,19 @@
   background: #00f0ff;
   box-shadow: 0 0 15px #00f0ff;
 }
+
+.secondary-button {
+  margin-top: 12px;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.secondary-button:hover {
+  background-color: #fff;
+  color: #101010;
+}
