@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider} from 'firebase/auth';
 
 const firebaseConfig = {
  apiKey: "AIzaSyAGrVGU1u8hKqVvMzpA0zcxZbrHhrq887w",
@@ -14,7 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Google Auth Provider
 const googleProvider = new GoogleAuthProvider();
 
-export { auth, googleProvider, RecaptchaVerifier, signInWithPhoneNumber };
+export { auth, googleProvider };
+

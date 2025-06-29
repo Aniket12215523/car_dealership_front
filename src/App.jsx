@@ -18,6 +18,8 @@ import FinalBookingPage from './components/FinalBookingPage';
 import CheckoutPage from './components/CheckoutPage';
 import RegisterForm from './components/register';
 import LoginForm from './components/login';
+import PhoneLoginForm from './components/PhoneLoginForm';
+import CombinedLogin from './components/CombinedLogin';
 
 function AppWrapper() {
   const location = useLocation();
@@ -39,6 +41,8 @@ function AppWrapper() {
           <Route path="/garageshowcase" element={<GarageShowcase />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/phone-login" element={<PhoneLoginForm />} />
+          <Route path="/combinedlogin" element={<CombinedLogin />} />
         </Routes>
       </div>
     </>
