@@ -19,7 +19,7 @@ import CheckoutPage from './components/CheckoutPage';
 import RegisterForm from './components/register';
 import LoginForm from './components/login';
 import PhoneLoginForm from './components/PhoneLoginForm';
-import CombinedLogin from './components/CombinedLogin';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function AppWrapper() {
   const location = useLocation();
@@ -31,18 +31,17 @@ function AppWrapper() {
       {isHome && <Hero />}
       <div className="scroll-target">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/book" element={<BookingPage />} />
-          <Route path="/book/:id" element={<FinalBookingPage />} />
-          <Route path="/final-booking" element={<FinalBookingPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/carshowroom3d" element={<CarShowroom3D />} />
-          <Route path="/car3dcarousel" element={<Car3DCarousel />} />
-          <Route path="/garageshowcase" element={<GarageShowcase />} />
+          <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+          <Route path="/book" element={<ProtectedRoute><BookingPage /></ProtectedRoute>} />
+          <Route path="/book/:id" element={<ProtectedRoute><FinalBookingPage /></ProtectedRoute>} />
+          <Route path="/final-booking" element={<ProtectedRoute><FinalBookingPage /></ProtectedRoute>} />
+          <Route path="/checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
+          <Route path="/carshowroom3d" element={<ProtectedRoute><CarShowroom3D /></ProtectedRoute>} />
+          <Route path="/car3dcarousel" element={<ProtectedRoute><Car3DCarousel /></ProtectedRoute>} />
+          <Route path="/garageshowcase" element={<ProtectedRoute><GarageShowcase /></ProtectedRoute>} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/phone-login" element={<PhoneLoginForm />} />
-          <Route path="/combinedlogin" element={<CombinedLogin />} />
         </Routes>
       </div>
     </>
