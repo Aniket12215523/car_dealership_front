@@ -19,4 +19,3 @@ const googleProvider = new GoogleAuthProvider();
 window.auth = auth; 
 
 export { auth, googleProvider };
-
