@@ -134,6 +134,8 @@ const Navbar = ({ className = '' }) => {
             <>
               <li><Link to="/login" onClick={() => setIsUserDropdownOpen(false)}>Login</Link></li>
               <li><Link to="/register" onClick={() => setIsUserDropdownOpen(false)}>Register</Link></li>
+              <li><Link to="/phone-login" onClick={() =>setIsUserDropdownOpen(false)}>Phone Login</Link></li>
+              <li><Link to="/CombinedLogin" onClick={() => setIsUserDropdownOpen(false)}>Combined Login</Link></li>
             </>
           )}
         </ul>
