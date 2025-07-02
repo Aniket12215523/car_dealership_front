@@ -19,7 +19,9 @@ import CheckoutPage from './components/CheckoutPage';
 import RegisterForm from './components/register';
 import LoginForm from './components/login';
 import PhoneLoginForm from './components/PhoneLoginForm';
+import ProfilePage from './components/ProfilePage';
 import ProtectedRoute from './components/ProtectedRoute';
+
 
 function AppWrapper() {
   const location = useLocation();
@@ -39,6 +41,7 @@ function AppWrapper() {
           <Route path="/carshowroom3d" element={<ProtectedRoute><CarShowroom3D /></ProtectedRoute>} />
           <Route path="/car3dcarousel" element={<ProtectedRoute><Car3DCarousel /></ProtectedRoute>} />
           <Route path="/garageshowcase" element={<ProtectedRoute><GarageShowcase /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/phone-login" element={<PhoneLoginForm />} />
