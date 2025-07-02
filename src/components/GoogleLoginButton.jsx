@@ -1,18 +1,28 @@
 import React from 'react';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from './firebaseConfig';
+import axios from 'axios';
 import './GoogleLoginButton.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const GoogleLoginButton = () => {
+    const navigate = useNavigate(); 
+
   const handleGoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
       console.log('Google User:', user);
 
-      
-      localStorage.setItem('token', user.accessToken);
-      window.location.href = '/';
+      const idToken = await user.getIdToken();
+
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/google-login`, {
+        idToken
+      });
+
+      localStorage.setItem('token', res.data.token);
+      navigate(window.location.href = '/profile');
     } catch (error) {
       console.error(error);
       alert('Google sign-in failed');

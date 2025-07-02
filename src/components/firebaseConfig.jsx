@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider} from 'firebase/auth';
 
 const firebaseConfig = {
- apiKey: "AIzaSyAGrVGU1u8hKqVvMzpA0zcxZbrHhrq887w",
+  apiKey: "AIzaSyAGrVGU1u8hKqVvMzpA0zcxZbrHhrq887w",
   authDomain: "car-dealership-auth.firebaseapp.com",
   projectId: "car-dealership-auth",
   storageBucket: "car-dealership-auth.firebasestorage.app",

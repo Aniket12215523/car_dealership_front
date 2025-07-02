@@ -37,7 +37,7 @@ function LoginForm() {
       );
       localStorage.setItem('token', res.data.token);
       setAlert({ message: 'Login Successful!', type: 'success' });
-      setTimeout(() => (window.location.href = '/'), 2000);
+      setTimeout(() => (window.location.href = '/profile'), 2000);
     } catch (err) {
       setAlert({
         message: err.response?.data?.message || 'Login failed. Please try again.',
