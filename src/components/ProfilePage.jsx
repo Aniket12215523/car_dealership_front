@@ -125,7 +125,7 @@ function ProfilePage() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        <h2>Your Profile</h2>
+        <h2 className='profile-h2'>Your Profile</h2>
 
         <div className="profile-image-section">
           <div className="image-preview">
@@ -164,19 +164,19 @@ function ProfilePage() {
 
         <form onSubmit={handleSubmit} className="profile-form">
           <div className="form-group">
-            <label>Full Name</label>
+            <label>Full Name :</label>
             <input type="text" name="name" value={userData.name || ''} onChange={handleChange} required />
           </div>
           <div className="form-group">
-            <label>Email</label>
+            <label>Email :</label>
             <input type="email" name="email" value={userData.email} readOnly className="read-only" />
           </div>
           <div className="form-group">
-            <label>Phone Number</label>
+            <label>Phone Number:</label>
             <input type="tel" name="phone" value={userData.phone || ''} onChange={handleChange} />
           </div>
           <div className="form-group">
-            <label>Location</label>
+            <label>Location :</label>
             <input type="text" name="location" value={userData.location || ''} onChange={handleChange} />
           </div>
           <div className="form-group">

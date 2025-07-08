@@ -4,6 +4,15 @@
   padding: 2rem;
 }
 
+.profile-h2 {
+  font-size: 2rem;
+  color: #2a2a2e;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  /* text-decoration: underline; */
+  /* border-bottom: 2px solid #444780; */
+}
+
 .profile-card {
   background: white;
   border-radius: 10px;
@@ -80,6 +89,7 @@
 .form-group {
   display: flex;
   flex-direction: column;
+  color: rgb(49, 41, 41);
 }
 
 label {
