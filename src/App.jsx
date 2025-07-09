@@ -20,6 +20,7 @@ import RegisterForm from './components/register';
 import LoginForm from './components/login';
 import PhoneLoginForm from './components/PhoneLoginForm';
 import ProfilePage from './components/ProfilePage';
+import PaymentSuccessPage from './components/PaymentSuccessPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 
@@ -38,6 +39,7 @@ function AppWrapper() {
           <Route path="/book/:id" element={<ProtectedRoute><FinalBookingPage /></ProtectedRoute>} />
           <Route path="/final-booking" element={<ProtectedRoute><FinalBookingPage /></ProtectedRoute>} />
           <Route path="/checkout" element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
+          <Route path="/payment-success" element={<ProtectedRoute><PaymentSuccessPage /></ProtectedRoute>} />
           <Route path="/carshowroom3d" element={<ProtectedRoute><CarShowroom3D /></ProtectedRoute>} />
           <Route path="/car3dcarousel" element={<ProtectedRoute><Car3DCarousel /></ProtectedRoute>} />
           <Route path="/garageshowcase" element={<ProtectedRoute><GarageShowcase /></ProtectedRoute>} />
