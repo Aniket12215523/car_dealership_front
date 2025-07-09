@@ -1,9 +1,10 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './CheckoutPage.css';
 import { useState } from 'react';
 
 function CheckoutPage() {
   const { state } = useLocation();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -51,12 +52,11 @@ function CheckoutPage() {
     try {
       setLoading(true);
 
-     
       const orderResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/payment/create-order`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          amount: state.car.price,  
+          amount: state.car.price,
           currency: 'INR',
           receipt: `receipt_order_${Date.now()}`
         })
@@ -71,15 +71,36 @@ function CheckoutPage() {
       }
 
       const options = {
-        key: 'rzp_live_T1Yp0Uy7x8D7kJ', 
+        key: 'rzp_live_T1Yp0Uy7x8D7kJ',
         amount: order.amount,
         currency: order.currency,
         name: 'Car Booking',
         description: `Booking for ${state.car.name}`,
         image: '/images/logo.png',
         order_id: order.id,
-        handler: (response) => {
-          alert(`Payment Successful! Payment ID: ${response.razorpay_payment_id}`);
+        handler: async (response) => {
+          
+          await fetch(`${import.meta.env.VITE_API_URL}/api/payment/record-transaction`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              paymentId: response.razorpay_payment_id,
+              orderId: response.razorpay_order_id,
+              bookingDetails: state.bookingDetails,
+              customer: formData,
+              amount: state.car.price,
+              status: 'captured'
+            })
+          });
+
+          
+          navigate('/payment-success', {
+            state: {
+              paymentId: response.razorpay_payment_id,
+              orderId: response.razorpay_order_id,
+              booking: state
+            }
+          });
         },
         prefill: {
           name: formData.name,
