@@ -1,0 +1,28 @@
+.payment-success-page {
+  text-align: center;
+  padding: 50px 20px;
+  color: #fff;
+}
+
+.payment-success-page h2 {
+  font-size: 2.5rem;
+  color: #2adbbd;
+}
+
+.summary-card {
+  margin: 30px auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 12px;
+  max-width: 400px;
+}
+
+.home-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #2adbbd;
+  border-radius: 8px;
+  color: #000;
+  margin-top: 20px;
+  text-decoration: none;
+}
