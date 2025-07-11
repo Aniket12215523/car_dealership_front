@@ -31,7 +31,7 @@ function MyOrdersPage() {
   return (
     <div className="orders-page">
       <video autoPlay muted loop className="orders-bg-video">
-        <source src="/videos/orders-bg.mp4" type="video/mp4" />
+        <source src="/videos/order.mp4" type="video/mp4" />
       </video>
 
       <div className="orders-content">
