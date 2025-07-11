@@ -26,6 +26,8 @@ function Home({ loading }) {
   const carGridRef = useRef(null);
   const sectionHeadingRefs = useRef([]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/api/cars`)
@@ -139,6 +141,13 @@ function Home({ loading }) {
         <ScrollReveal enabled={!loading}></ScrollReveal>
         <CarShowroom3D />
       </section>
+
+      <section id="showroom3d" data-color="#2adbbd" className="showroom3d-section">
+        <ScrollReveal enabled={!loading}></ScrollReveal>
+        <CarShowroom3D />
+      </section>
+
+       
 
       <CarDetailsModal car={selectedCar} onClose={() => setSelectedCar(null)} />
     </>
