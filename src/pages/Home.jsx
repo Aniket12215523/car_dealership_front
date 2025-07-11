@@ -20,7 +20,6 @@ gsap.registerPlugin(ScrollTrigger);
 function Home({ loading }) {
   const [cars, setCars] = useState([]);
   const [selectedCar, setSelectedCar] = useState(null);
-  const navigate = useNavigate();
 
  
   const carGridRef = useRef(null);
@@ -142,10 +141,7 @@ function Home({ loading }) {
         <CarShowroom3D />
       </section>
 
-      <section id="showroom3d" data-color="#2adbbd" className="showroom3d-section">
-        <ScrollReveal enabled={!loading}></ScrollReveal>
-        <CarShowroom3D />
-      </section>
+      
 
        
 
