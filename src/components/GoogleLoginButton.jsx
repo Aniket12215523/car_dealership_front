@@ -22,6 +22,7 @@ const GoogleLoginButton = () => {
       });
 
       localStorage.setItem('token', res.data.token);
+      localStorage.setItem('userId', res.data.user._id);
       navigate(window.location.href = '/profile');
     } catch (error) {
       console.error(error);

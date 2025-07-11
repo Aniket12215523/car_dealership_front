@@ -1,0 +1,164 @@
+.orders-page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #fff;
+}
+
+.orders-bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.orders-content {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* .orders-heading {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2adbbd, #1400c6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  margin-bottom: 30px;
+  text-align: center;
+   animation: fadeInUp 1s ease forwards, glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px #60bdae, 0 0 20px #1da4a4;
+  }
+  50% {
+    text-shadow: 0 0 20px #2adbbd, 0 0 40px #1400c6;
+  }
+} */
+
+
+.mybookings-nelphim {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-top: -10rem;
+  margin-bottom: -40px;
+  text-align: center;
+  left: 15rem;
+  background: linear-gradient(145deg, #d7c593 0%, #10b2d6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow:
+    0 1px 4px rgba(0,0,0,0.45),
+    0 2px 8px rgba(0,0,0,0.35);
+  filter: drop-shadow(0 1px 2px rgba(255,255,255,0.15));
+  position: relative;
+  display: inline-block;
+}
+  
+.empty-message {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.orders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.order-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-5px);
+  border-top: 3px solid #177ac1;
+}
+
+.order-car-image {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.status-badge {
+  padding: 3px 10px;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.status-badge.confirmed {
+  background: #28a745;
+}
+
+.status-badge.pending {
+  background: #ffc107;
+  color: #000;
+}
+
+.status-badge.cancelled {
+  background: #dc3545;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.card-actions button {
+  padding: 8px 14px;
+  border: none;
+  background: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card-actions button:hover {
+  background: #0056b3;
+}
+
+.card-actions .cancel-btn {
+  background: #dc3545;
+}
+
+.card-actions .cancel-btn:hover {
+  background: #c82333;
+}
+

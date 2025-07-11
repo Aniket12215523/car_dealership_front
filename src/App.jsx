@@ -21,6 +21,7 @@ import LoginForm from './components/login';
 import PhoneLoginForm from './components/PhoneLoginForm';
 import ProfilePage from './components/ProfilePage';
 import PaymentSuccessPage from './components/PaymentSuccessPage';
+import MyOrdersPage from './pages/MyOrdersPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 
@@ -44,6 +45,7 @@ function AppWrapper() {
           <Route path="/car3dcarousel" element={<ProtectedRoute><Car3DCarousel /></ProtectedRoute>} />
           <Route path="/garageshowcase" element={<ProtectedRoute><GarageShowcase /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+          <Route path="/my-orders" element={<ProtectedRoute><MyOrdersPage /></ProtectedRoute>} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/phone-login" element={<PhoneLoginForm />} />

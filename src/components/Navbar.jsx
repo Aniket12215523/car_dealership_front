@@ -128,6 +128,7 @@ const Navbar = ({ className = '' }) => {
           {isLoggedIn ? (
             <>
               <li><Link to="/profile" onClick={() => setIsUserDropdownOpen(false)}>Profile</Link></li>
+              <li><Link to="/my-orders" onClick={() => setIsUserDropdownOpen(false)}>My Orders</Link></li>
               <li><button onClick={handleLogout}>Logout</button></li>
             </>
           ) : (

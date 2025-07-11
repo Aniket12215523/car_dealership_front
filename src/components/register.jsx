@@ -25,6 +25,7 @@ function RegisterForm() {
     try {
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`, formData);
       localStorage.setItem('token', res.data.token);
+      localStorage.setItem('userId', res.data.user._id);
       setAlert({ message: 'Registration Successful!', type: 'success' });
       setTimeout(() => (window.location.href = '/profile'), 2000);
     } catch (err) {

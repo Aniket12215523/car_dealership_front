@@ -1,0 +1,58 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 400px;
+  max-width: 95%;
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
+}
+
+.modal-card h3 {
+  margin-bottom: 1rem;
+}
+
+.modal-card form label {
+  display: block;
+  margin: 0.5rem 0 0.2rem;
+  font-weight: 600;
+}
+
+.modal-card form input,
+.modal-card form select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-actions button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-actions .cancel-btn {
+  background: #dc3545;
+}

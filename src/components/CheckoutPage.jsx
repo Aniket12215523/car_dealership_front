@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 function CheckoutPage() {
   const { state } = useLocation();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -79,19 +79,30 @@ function CheckoutPage() {
         image: '/images/logo.png',
         order_id: order.id,
         handler: async (response) => {
-          
-          await fetch(`${import.meta.env.VITE_API_URL}/api/payment/record-transaction`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              paymentId: response.razorpay_payment_id,
-              orderId: response.razorpay_order_id,
-              bookingDetails: state.bookingDetails,
-              customer: formData,
-              amount: state.car.price,
-              status: 'captured'
-            })
-          });
+        alert(`Payment Successful! Payment ID: ${response.razorpay_payment_id}`);
+
+        await fetch(`${import.meta.env.VITE_API_URL}/api/payment/save-order`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({
+          userId: localStorage.getItem('userId'),
+          userName: formData.name,
+          userEmail: formData.email,
+          userPhone: formData.phone,
+          carId: state.car._id,
+          carName: state.car.name,
+          carImage: state.car.image,
+          amountPaid: order.amount,
+          bookingDate: state.bookingDetails.date,
+          bookingTime: state.bookingDetails.time,
+          address: formData.address,
+          paymentId: response.razorpay_payment_id,
+          status: 'Confirmed'
+        })
+      });
 
           
           navigate('/payment-success', {

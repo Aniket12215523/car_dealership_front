@@ -36,6 +36,7 @@ function LoginForm() {
         formData
       );
       localStorage.setItem('token', res.data.token);
+      localStorage.setItem('userId', res.data.user._id);
       setAlert({ message: 'Login Successful!', type: 'success' });
       setTimeout(() => (window.location.href = '/'), 2000);
     } catch (err) {
